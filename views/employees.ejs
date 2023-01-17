@@ -1,0 +1,79 @@
+<%#//esta es la sintaxis correcta para incluir en ejs.%> <%-
+include('parte/_header');%>
+
+<div class="container abs-center">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-dark text-center justify-content-center align-items-center" style="width: 18rem">
+        <div class="card-body">
+          <form action="/api/employees" , method="post">
+            <div class="frorm-group mt-2">
+              <input
+                type="text"
+                ,
+                name="name"
+                ,
+                placeholder="Name"
+                ,
+                class="form-control"
+              />
+            </div>
+            <div class="frorm-group mt-2">
+              <input
+                type="text"
+                ,
+                name="salary"
+                ,
+                placeholder="Salary"
+                ,
+                class="form-control"
+              />
+            </div>
+
+            <button type="submit" , class="btn btn-primary mt-2">
+              Save Customers
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <table class="table table-bordered table-hover bg-dark text-light">
+        <thead>
+          <tr>
+            <th>n*</th>
+            <th>Name</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(data) { %> <% for (var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%= (i+1) %></td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].salary %></td>
+            <td>
+              <a
+                href="/api/delete/<%= data[i].id %>"
+                ,
+                class="btn btn-danger"
+                ,
+                method="delete"
+              >
+                Delete</a
+              >
+              <a href="/api/update/<%= data[i].id %>" , class="btn btn-info">
+                Update</a
+              >
+            </td>
+          </tr>
+          <% } %> <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('parte/_footer');%>

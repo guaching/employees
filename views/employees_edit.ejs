@@ -1,0 +1,38 @@
+<%#//esta es la sintaxis correcta para incluir en ejs.%> <%-
+include('parte/_header');%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <form action="/api/update/<%= data.id %>" , method="post">
+            <div class="frorm-group mt-2">
+              <input
+                type="text"
+                ,
+                name="name"
+                value="<%= data.name%>"
+                class="form-control"
+              />
+            </div>
+            <div class="frorm-group mt-2">
+              <input
+                type="text"
+                name="salary"
+                ,
+                value="<%= data.salary %>"
+                class="form-control"
+              />
+            </div>
+            <button type="submit" , class="btn btn-primary mt-2">
+              Edit Employee
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('parte/_footer');%>
